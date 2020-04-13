@@ -1,5 +1,7 @@
 #### mybatisPlus工具的体验和练习
 
+2020-4-13 笔记
+
 1.使用mybatisPlus可以节省大量的时间和精力，但是要注意不要同时导入mybatis和mybatisPlus，可能存在冲突
 
 2.配置数据库连接信息
@@ -13,3 +15,5 @@
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+6.插入测试的结果表示  mybaitsPlus会自动生成ID。但是自动生成的ID可能并不是我们需要的。

@@ -27,5 +27,19 @@ class MybatisPlusPracticeApplicationTests {
         SysRole selectById = roleMapper.selectById(4);
         System.out.println(selectById);
     }
+    
+    // 插入测试
+    @Test
+    void insertTest() {
+        SysRole role = new SysRole();
+        role.setName("插入测试");
+        role.setRemark("charuceshi");
+        role.setAvailable(null);
+        
+        int result = roleMapper.insert(role);
+        System.out.println(">>>>>>");
+        System.out.println(result);
+        System.out.println(role);
 
+    }
 }
