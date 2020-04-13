@@ -7,3 +7,9 @@
 3.原来的流程  pojo-dao(接口 xml 容易出错)-service-controller
 
 4.使用mybatisPlus之后  pojo-mapper-使用
+
+5.mybatisPlus可以配合日志输出  以后的学习既可以查看日志
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

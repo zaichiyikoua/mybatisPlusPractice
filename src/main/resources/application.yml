@@ -9,3 +9,8 @@ spring:
     url: jdbc:mysql://localhost:3306/managersys?characterEncoding=utf-8&useLegacyDatetimeCode=false&serverTimezone=UTC
     username: root
     password: zaichiyikoua1
+    
+# mybatisPlus配合日志
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
