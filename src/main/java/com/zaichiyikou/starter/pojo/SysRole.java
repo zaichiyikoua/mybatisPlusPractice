@@ -5,7 +5,9 @@ package com.zaichiyikou.starter.pojo;
 
 import java.sql.Date;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 
 
@@ -27,6 +29,8 @@ public class SysRole {
     private String name;
     private String remark;
     private String available;
+    // 使用注解  fill是自动填充策略，也是一个枚举类  比如插入填充字段，插入和更新填充字段等等
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date createtime;
     
     public Long getId() {
