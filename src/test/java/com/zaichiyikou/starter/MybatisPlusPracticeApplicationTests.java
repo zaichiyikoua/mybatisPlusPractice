@@ -1,5 +1,6 @@
 package com.zaichiyikou.starter;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -64,5 +65,19 @@ class MybatisPlusPracticeApplicationTests {
         role.setRemark("乐观锁测试");
         // 3.执行更新操作
         roleMapper.update(role, null);
+    }
+    
+    // MP查询测试
+    @Test
+    void selectTest() {
+        // 多表查还是要自己写xml
+        // 这种的是较为简单一点的单表条件查询，复杂的查询会使用到Wrapper
+        // 多条件查询  KV 会实现自动拼接   这样更加方便，不用再去辛苦的写sql
+        HashMap<String, Object> map = new HashMap<>();
+        // KV会拼接成 where name = ?
+        map.put("name", "...");
+        map.put("remark", "...");
+        // 很明显的需要一个map
+        roleMapper.selectByMap(map);
     }
 }
