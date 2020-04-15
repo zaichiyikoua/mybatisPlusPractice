@@ -27,19 +27,30 @@ class MybatisPlusPracticeApplicationTests {
         SysRole selectById = roleMapper.selectById(4);
         System.out.println(selectById);
     }
-    
+
     // 插入测试
-    @Test
-    void insertTest() {
+//    @Test
+//    void insertTest() {
+//        SysRole role = new SysRole();
+//        role.setName("插入测试");
+//        role.setRemark("charuceshi");
+//        role.setAvailable(null);
+//        
+//        int result = roleMapper.insert(role);
+//        System.out.println(">>>>>>");
+//        System.out.println(result);
+//        System.out.println(role);
+//
+//    }
+    void updateTest() {
         SysRole role = new SysRole();
-        role.setName("插入测试");
+        role.setName("更新测试");
         role.setRemark("charuceshi");
         role.setAvailable(null);
-        
-        int result = roleMapper.insert(role);
-        System.out.println(">>>>>>");
-        System.out.println(result);
-        System.out.println(role);
 
+        // 这个update也是有updateWrapper条件构造器的
+//          roleMapper.update(entity, updateWrapper)
+        int i = roleMapper.updateById(role);
+        System.out.println(i);
     }
 }
