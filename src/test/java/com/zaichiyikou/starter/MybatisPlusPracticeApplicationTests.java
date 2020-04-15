@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zaichiyikou.starter.mapper.RoleMapper;
 import com.zaichiyikou.starter.pojo.SysRole;
 
@@ -54,8 +56,8 @@ class MybatisPlusPracticeApplicationTests {
         int i = roleMapper.updateById(role);
         System.out.println(i);
     }
-    
-    // 乐观锁测试  单线程下
+
+    // 乐观锁测试 单线程下
     @Test
     void optimisticLockerTest() {
         // 1.查询用户信息
@@ -66,18 +68,32 @@ class MybatisPlusPracticeApplicationTests {
         // 3.执行更新操作
         roleMapper.update(role, null);
     }
-    
+
     // MP查询测试
     @Test
     void selectTest() {
         // 多表查还是要自己写xml
         // 这种的是较为简单一点的单表条件查询，复杂的查询会使用到Wrapper
-        // 多条件查询  KV 会实现自动拼接   这样更加方便，不用再去辛苦的写sql
+        // 多条件查询 KV 会实现自动拼接 这样更加方便，不用再去辛苦的写sql
         HashMap<String, Object> map = new HashMap<>();
         // KV会拼接成 where name = ?
         map.put("name", "...");
         map.put("remark", "...");
         // 很明显的需要一个map
         roleMapper.selectByMap(map);
+    }
+
+    // 分页查询测试
+    @Test
+    void pageTest() {
+        // 注册完之后
+        // 注意是mybatisPlus的page对象
+        // 第一个参数是当前页 第二个参数是页面大小
+        Page<SysRole> page = new Page<>(0, 5);
+        // mybatisPlus的部分查询就是分页查询，需要page对象
+        IPage<SysRole> selectPage = roleMapper.selectPage(page, null);
+
+        page.getRecords().forEach(System.out::println);
+        System.out.println(page.getTotal());
     }
 }

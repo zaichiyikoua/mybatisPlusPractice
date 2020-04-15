@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.baomidou.mybatisplus.extension.plugins.OptimisticLockerInterceptor;
+import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 
 @Configuration
 // 注意 配置好了mapper之后要配置扫描
@@ -19,5 +20,13 @@ public class MybatisPlusConfig {
     public OptimisticLockerInterceptor optimisticLockerInterceptor() {
         return new OptimisticLockerInterceptor();
         
+    }
+    
+    // 注册分页插件
+    @Bean
+    public PaginationInterceptor paginationInterceptor() {
+        // 这种是基础配置，如果还要扩展，去官网看具体的配置
+        // 不用再写limit了
+        return new PaginationInterceptor();
     }
 }
