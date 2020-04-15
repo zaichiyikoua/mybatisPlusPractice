@@ -53,4 +53,16 @@ class MybatisPlusPracticeApplicationTests {
         int i = roleMapper.updateById(role);
         System.out.println(i);
     }
+    
+    // 乐观锁测试  单线程下
+    @Test
+    void optimisticLockerTest() {
+        // 1.查询用户信息
+        SysRole role = roleMapper.selectById(1);
+        // 2.修改用户信息
+        role.setName("乐观锁");
+        role.setRemark("乐观锁测试");
+        // 3.执行更新操作
+        roleMapper.update(role, null);
+    }
 }

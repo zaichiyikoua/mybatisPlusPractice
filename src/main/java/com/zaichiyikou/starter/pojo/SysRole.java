@@ -9,6 +9,7 @@ import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.Version;
 
 
 /**
@@ -32,6 +33,10 @@ public class SysRole {
     // 使用注解  fill是自动填充策略，也是一个枚举类  比如插入填充字段，插入和更新填充字段等等
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date createtime;
+    
+//    MP乐观锁注解
+//    @Version
+//    private Integer version;
     
     public Long getId() {
         return id;

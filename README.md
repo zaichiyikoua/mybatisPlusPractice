@@ -20,9 +20,9 @@ mybatis-plus:
 
 2020-4-15 笔记
 
-1.update会通过条件自动动态的拼接sql(mybatisPlus及其重要的优势)
+##### 1.update会通过条件自动动态的拼接sql(mybatisPlus及其重要的优势)
 
-2.自动填充，比如创建时间，修改时间等等，像这样的字段一般都是数据库自动完成的，不需要手动更新，也希望手动改。
+##### 2.自动填充，比如创建时间，修改时间等等，像这样的字段一般都是数据库自动完成的，不需要手动更新，也希望手动改。
 
 2.1 数据库级别(但是在实际工作中是不允许去动数据库的，不要再new date然后去格式化再插入了)
 
@@ -33,3 +33,34 @@ mybatis-plus:
 2.2.1 删除数据库中默认值和更新操作
 
 2.2.2 在实体类上增加注解(推荐使用)，然后去写一个注解handler类，实现metaobjecthandler接口，重写里面的两个方法
+
+##### 3.MybatisPlus乐观锁机制
+乐观锁一般使用version字段来实现，每次更新的时候去携带一个版本号来判断数据到底有没有更新
+
+实现方式：
+
+1.取出记录时，获取当前version
+
+2.更新时，带上这个version
+
+3.执行更新时，set version  = newVersion where version = oldVersion
+
+4.如果version不对，则更新失败
+
+举个栗子：
+
+--A 线程
+update user set name ="test",version = version + 1
+where id = 2 and version = 1
+
+--B 线程抢先执行，所以这个时候version = 2，那么线程A很明显就执行失败了，这就实现了数据的锁定机制
+
+update user set name ="test",version = version + 1
+where id = 2 and version = 1
+
+##### 3.1MybatisPlus乐观锁的具体使用：
+1.数据库增加version字段(这个肯定是必须的)
+
+2.pojo实体类增加对应的字段
+
+3.注解组件，增加配置类
