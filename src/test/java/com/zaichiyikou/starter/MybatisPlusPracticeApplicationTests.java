@@ -96,4 +96,16 @@ class MybatisPlusPracticeApplicationTests {
         page.getRecords().forEach(System.out::println);
         System.out.println(page.getTotal());
     }
+    
+    @Test
+    void deleteTest() {
+//        // 条件删除
+//        roleMapper.delete(queryWrapper);
+//        // 通过id批量删除 参数是Collection
+//        roleMapper.deleteBatchIds(idList);
+//        // 通过id删除
+//        roleMapper.deleteById(id);
+//        // 条件删除
+//        roleMapper.deleteByMap(columnMap);
+    }
 }

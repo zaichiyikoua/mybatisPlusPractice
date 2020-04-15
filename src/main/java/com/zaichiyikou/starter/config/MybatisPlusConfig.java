@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.baomidou.mybatisplus.core.injector.ISqlInjector;
+import com.baomidou.mybatisplus.extension.injector.LogicSqlInjector;
 import com.baomidou.mybatisplus.extension.plugins.OptimisticLockerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 
@@ -28,5 +30,11 @@ public class MybatisPlusConfig {
         // 这种是基础配置，如果还要扩展，去官网看具体的配置
         // 不用再写limit了
         return new PaginationInterceptor();
+    }
+    
+    // 注册逻辑删除组件
+    @Bean
+    public ISqlInjector isqlInjector() {
+        return new LogicSqlInjector();
     }
 }

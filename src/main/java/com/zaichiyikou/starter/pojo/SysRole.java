@@ -9,6 +9,7 @@ import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.Version;
 
 
@@ -38,6 +39,9 @@ public class SysRole {
 //    @Version
 //    private Integer version;
     
+//    逻辑删除
+//    @TableLogic
+//    private Integer delete;
     public Long getId() {
         return id;
     }
