@@ -12,6 +12,7 @@ spring:
     
 # mybatisPlus配合日志
 mybatis-plus:
+  mapper-locations: classPath:mapper/**.xml
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   global-config:
